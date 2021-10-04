@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter nouveau patient</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+    <style>
+body {
+	padding-top: 50px;
+}
+
+.special {
+	padding-top: 50px;
+}
+</style>
+</head>
+<body>
+<div class = "container special">
+    <h2 class="h2">Ajout d'un nouveau patient</h2>
+    <form method="post" th:action="@{/addPatient}" th:object="${patient}">
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="firstNameInput">Prénom</label>
+            <input type = "text" th:field="*{firstName}" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp" placeholder="Saisir le prénom" required="required">
+            <small id = "firstNameHelp" class = "form-text text-muted">Merci d'écrire le prénom du patient</small>
+        </div>
+        <div class="form-group">
+            <label for="lastNameInput">Nom</label>
+            <input type = "text" th:field="*{lastName}" class="form-control" id="lastNameInput" aria-describedby="lastNameHelp" placeholder="Saisir le nom" required="required">
+            <small id = "lastNameHelp" class = "form-text text-muted">Merci d'écrire le nom</small>
+        </div>
+        <div class="form-group">
+            <label for="birthdayInput">Date de naissance (JJ-MM-YYYY)</label>
+            <input type = "text" th:field="*{dateOfBirth}" class="form-control" id="birthdayInput" aria-describedby="birthdayHelp" placeholder="Saisir la date d'anniversaire" required="required">
+            <small id = "birthdayHelp" class = "form-text text-muted">Merci d'écrire la date d'anniversaire</small>
+        </div>
+        <div class="form-group">
+            <label for="sexeInput">Sexe de la personne (M = Masculin, F = Féminin)</label>
+            <input type = "text" th:field="*{sexe}" class="form-control" id="sexeInput" aria-describedby="sexeHelp" placeholder="Saisir le sexe" maxlength="1" size="1" required="required">
+            <small id = "sexeHelp" class = "form-text text-muted">Merci d'écrire le sexe</small>
+        </div>
+        <div class="form-group">
+            <label for="adressInput">Adresse</label>
+            <input type = "text" th:field="*{adress}" class="form-control" id="adressInput" aria-describedby="adressHelp" placeholder="Saisir l'adresse">
+            <small id = "adressHelp" class = "form-text text-muted">Merci d'écrire l'adresse</small>
+        </div>
+        <div class="form-group">
+            <label for="phoneInput">Numéro de téléphone</label>
+            <input type = "text" th:field="*{phone}" class="form-control" id="phoneInput" aria-describedby="phoneHelp" placeholder="Saisir le téléphone">
+            <small id = "phoneHelp" class = "form-text text-muted">Merci d'écrire le téléphone</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Valider les modifications</button>
+    </form>
+</div>
+</body>
+</html>
