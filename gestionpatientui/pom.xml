@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.gestionpatientui</groupId>
 	<artifactId>gestionpatientui</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<name>gestionpatientui</name>
 	<description>Gestion patient ui for interaction</description>
 	<properties>
