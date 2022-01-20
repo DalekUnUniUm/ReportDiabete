@@ -9,8 +9,11 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class GeneratorProxy {
 
+    private String ipGenerator = "172.28.0.5" ;
+    //private String ipGenerator = "localhost" ;
+
     public int getTriggerTerm(String patId){
-        String getTriggerTermUrl = "http://localhost:8084/generator/"+patId;
+        String getTriggerTermUrl = "http://"+ipGenerator+":8084/generator/"+patId;
 
         RestTemplate restTemplate = new RestTemplate();
 

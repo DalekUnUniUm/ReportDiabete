@@ -11,8 +11,11 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class PatientProxy {
 
+    private String ipPatient = "172.28.0.3" ;
+    //private String ipPatient = "localhost" ;
+
     public Iterable<Patient> getPatients(){
-        String getPatientsUrl = "http://localhost:8080/patients" ;
+        String getPatientsUrl = "http://"+ipPatient+":8080/patients" ;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Iterable<Patient>> response = restTemplate.exchange(
@@ -25,7 +28,7 @@ public class PatientProxy {
     }
 
     public Patient getPatient(int id){
-        String getPatientUrl = "http://localhost:8080/patient/"+id ;
+        String getPatientUrl = "http://"+ipPatient+":8080/patient/"+id ;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Patient> response = restTemplate.exchange(
@@ -38,7 +41,7 @@ public class PatientProxy {
     }
 
     public Patient addPatient(Patient p){
-        String addPatientUrl = "http://localhost:8080/patient/add" ;
+        String addPatientUrl = "http://"+ipPatient+":8080/patient/add" ;
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Patient> request = new HttpEntity<Patient>(p) ;
@@ -53,7 +56,7 @@ public class PatientProxy {
     }
 
     public Patient updatePatient(Patient p){
-        String updatePatientUrl = "http://localhost:8080/patient/"+p.getId() ;
+        String updatePatientUrl = "http://"+ipPatient+":8080/patient/"+p.getId() ;
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Patient> request = new HttpEntity<Patient>(p);
         ResponseEntity<Patient> response = restTemplate.exchange(

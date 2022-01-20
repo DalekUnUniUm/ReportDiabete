@@ -1,0 +1,55 @@
+version: '4.4.3'
+
+networks:
+  external-api:
+    ipam:
+       config: 
+          - subnet: 172.28.0.0/16
+            gateway: 172.28.0.1
+
+services:
+  gestionpatientui:
+        image: release/gestionpatientui
+        container_name: gestionpatientui
+        networks:
+            external-api:
+                ipv4_address: 172.28.0.2 
+        ports:
+            - "9001:9001"
+        depends_on:
+            - patient
+            - history
+            - generator
+
+  patient:
+        image: release/patient
+        container_name: patient
+        networks:
+            external-api:
+                ipv4_address: 172.28.0.3
+        ports:
+            - "8080:8080"
+        expose:
+            - "8080"
+
+  history:
+        image: release/history
+        container_name: history
+        networks:
+            external-api:
+                ipv4_address: 172.28.0.4
+        ports:
+            - "8082:8082"
+        expose:
+            - "8082"
+
+  generator:
+        image: release/generator
+        container_name: generator
+        networks:
+            external-api:
+                ipv4_address: 172.28.0.5
+        ports:
+            - "8084:8084"
+        expose:
+            - "8084"

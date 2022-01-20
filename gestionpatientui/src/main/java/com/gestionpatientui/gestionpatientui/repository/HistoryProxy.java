@@ -15,8 +15,11 @@ import java.util.Optional;
 @Component
 public class HistoryProxy {
 
+    private String ipHistory = "172.28.0.4" ;
+    //private String ipHistory = "localhost" ;
+
     public List<History> getHistorys(int id){
-        String getHistorysUrl = "http://localhost:8082/historys/"+id;
+        String getHistorysUrl = "http://"+ipHistory+":8082/historys/"+id;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<History>> response = restTemplate.exchange(
@@ -30,7 +33,7 @@ public class HistoryProxy {
     }
 
     public History getHistory(String id){
-        String getHistoryUrl = "http://localhost:8082/history/"+id ;
+        String getHistoryUrl = "http://"+ipHistory+":8082/history/"+id ;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<History> response = restTemplate.exchange(
@@ -43,7 +46,7 @@ public class HistoryProxy {
     }
 
     public History addNote(History h){
-        String addNoteUrl = "http://localhost:8082/history/add" ;
+        String addNoteUrl = "http://"+ipHistory+":8082/history/add" ;
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<History> request = new HttpEntity<History>(h) ;
@@ -58,7 +61,7 @@ public class HistoryProxy {
     }
 
     public History updateNote(History h){
-        String updateNoteUrl = "Http://localhost:8082/history/"+h.getId();
+        String updateNoteUrl = "Http://"+ipHistory+":8082/history/"+h.getId();
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<History> request = new HttpEntity<History>(h);
