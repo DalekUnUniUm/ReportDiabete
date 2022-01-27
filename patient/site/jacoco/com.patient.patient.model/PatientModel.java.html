@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patient</a> &gt; <a href="index.source.html" class="el_package">com.patient.patient.model</a> &gt; <span class="el_source">PatientModel.java</span></div><h1>PatientModel.java</h1><pre class="source lang-java linenums">package com.patient.patient.model;
+
+import lombok.Data;
+
+import javax.persistence.*;
+import java.util.Date;
+
+<span class="nc bnc" id="L8" title="All 62 branches missed.">@Data</span>
+@Entity
+@Table(name = &quot;patients&quot;)
+public class PatientModel {
+
+<span class="fc" id="L13">    public PatientModel(){};</span>
+
+<span class="nc" id="L15">    public PatientModel(Long id, String firstName, String lastName, String dateOfBirth, String sexe, String adress, String phone){</span>
+<span class="nc" id="L16">        this.id = id ;</span>
+<span class="nc" id="L17">        this.firstName = firstName ;</span>
+<span class="nc" id="L18">        this.lastName = lastName ;</span>
+<span class="nc" id="L19">        this.dateOfBirth = dateOfBirth ;</span>
+<span class="nc" id="L20">        this.sexe = sexe ;</span>
+<span class="nc" id="L21">        this.adress = adress ;</span>
+<span class="nc" id="L22">        this.phone = phone ;</span>
+<span class="nc" id="L23">    }</span>
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+<span class="nc" id="L27">    private Long id ;</span>
+
+    @Column(name = &quot;first_name&quot;)
+    private String firstName ;
+
+    @Column(name = &quot;last_name&quot;)
+    private String lastName ;
+
+    @Column(name =&quot;birthday&quot;)
+    private String dateOfBirth ;
+
+    private String sexe ;
+
+    private String adress ;
+
+    private String phone ;
+
+    public String getFirstName() {
+<span class="nc" id="L45">        return firstName;</span>
+    }
+
+    public String getLastName() {
+<span class="nc" id="L49">        return lastName;</span>
+    }
+
+    public String getDateOfBirth() {
+<span class="nc" id="L53">        return dateOfBirth;</span>
+    }
+
+    public String getSexe() {
+<span class="nc" id="L57">        return sexe;</span>
+    }
+
+    public String getAdress() {
+<span class="nc" id="L61">        return adress;</span>
+    }
+
+    public String getPhone() {
+<span class="nc" id="L65">        return phone;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
