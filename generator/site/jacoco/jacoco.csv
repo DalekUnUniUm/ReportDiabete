@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+generator,com.generator.generator,GeneratorApplication,5,3,0,0,2,1,1,1,1,1
+generator,com.generator.generator.service,GeneratorService,30,3,2,0,5,1,2,1,1,1
+generator,com.generator.generator.controller,GeneratorController,5,3,0,0,1,1,1,1,1,1
+generator,com.generator.generator.model,GeneratorModel,138,0,24,0,6,0,23,0,11,0
+generator,com.generator.generator.constant,TriggerTermConst,6,0,0,0,2,0,2,0,2,0
+generator,com.generator.generator.constant,TriggerTermConstTest,51,0,0,0,2,0,2,0,2,0
+generator,com.generator.generator.constant,TriggerTermConstRelease,51,0,0,0,2,0,2,0,2,0
