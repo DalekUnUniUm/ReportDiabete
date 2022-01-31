@@ -5,7 +5,6 @@ import com.patient.patient.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Iterator;
 import java.util.Optional;
 
 @RestController
@@ -26,25 +25,16 @@ public class PatientController {
         return patientService.getPatients();
     }
 
-    /**Endpoint to get one patient**/
+    /**Endpoint to get one patient
+     * @return**/
     @GetMapping("/patient/{id}")
-    public PatientModel getPatient(@PathVariable("id") final Long id){
-        Optional<PatientModel> patient = patientService.getPatient(id);
-        if(patient.isPresent()) return patient.get();
-        else return null ;
+    public Optional<PatientModel> getPatient(@PathVariable("id") final Long id){
+        return patientService.getPatient(id);
     }
 
     /**Endpoint to update patient information**/
     @PutMapping("/patient/{id}")
     public PatientModel updatePatient(@PathVariable("id") final Long id, @RequestBody PatientModel patientModel){
-        /**Check if the patient exist in database**/
-        Optional<PatientModel> p = patientService.getPatient(id) ;
-        if(p.isPresent()){
-            patientService.savePatientModel(patientModel);
-            return patientModel ;
-        }
-        else {
-            return null ;
-        }
+        return patientService.updatePatient(id,patientModel);
     }
 }
