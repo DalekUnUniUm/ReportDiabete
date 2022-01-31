@@ -21,7 +21,8 @@ public class HistoryService implements HistoryServiceInterface {
 
     @Override
     public Optional<HistoryModel> getHistory(String id){
-        return historyRepository.findNotesById(id);
+        Optional<HistoryModel> history = historyRepository.findNotesById(id);
+        return history.map(Optional::of).orElse(null);
     }
 
     @Override
@@ -29,4 +30,14 @@ public class HistoryService implements HistoryServiceInterface {
         historyRepository.save(historyModel);
     }
 
+    @Override
+    public HistoryModel updateHistory(String id, HistoryModel historyModel){
+        Optional<HistoryModel> h = getHistory(id);
+        if(h.isPresent()){
+            historyRepository.save(historyModel);
+            return historyModel ;
+        }
+        else
+            return null ;
+    }
 }

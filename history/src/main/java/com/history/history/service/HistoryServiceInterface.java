@@ -15,4 +15,6 @@ public interface HistoryServiceInterface {
 
     void saveHistory(HistoryModel historyModel);
 
+    HistoryModel updateHistory(String id, HistoryModel historyModel);
+
 }
