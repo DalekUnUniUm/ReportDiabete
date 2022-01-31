@@ -1,12 +1,8 @@
 package com.history.history.controller;
 
 import com.history.history.model.HistoryModel;
-import com.history.history.service.HistoryService;
 import com.history.history.service.HistoryServiceInterface;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +20,11 @@ public class HistoryController {
         return historyServiceInterface.getHistorys(patId);
     }
 
-    /**Get one note by id**/
+    /**Get one note by id
+     * @return**/
     @GetMapping("/history/{id}")
-    public HistoryModel getHistory(@PathVariable("id") String id){
-        Optional<HistoryModel> history = historyServiceInterface.getHistory(id);
-        if(history.isPresent()) return history.get();
-        else return null ;
+    public Optional<HistoryModel> getHistory(@PathVariable("id") String id){
+        return historyServiceInterface.getHistory(id);
     }
 
     /**Save note patient**/
@@ -41,12 +36,6 @@ public class HistoryController {
     /**Update note patient**/
     @PutMapping("/history/{id}")
     public HistoryModel updateHistory(@PathVariable String id, @RequestBody HistoryModel historyModel){
-        Optional<HistoryModel> h = historyServiceInterface.getHistory(id);
-        if(h.isPresent()){
-            historyServiceInterface.saveHistory(historyModel);
-            return historyModel ;
-        }
-        else
-            return null ;
+        return historyServiceInterface.updateHistory(id,historyModel);
     }
 }
