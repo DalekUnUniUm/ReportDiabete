@@ -19,6 +19,20 @@ public class PatientService {
         return savedPatientMode ;
     }
 
+    /**Endpoint for updated patient**/
+    public PatientModel updatePatient(final Long id,PatientModel patientModel){
+        /**Check if the patient exist in database**/
+        Optional<PatientModel> p = getPatient(id) ;
+        if(p.isPresent()){
+            PatientModel savedPatientMode = patientRepository.save(patientModel);
+            return savedPatientMode ;
+        }
+        else {
+            return null ;
+        }
+
+    }
+
     /**Endpoint to get all patients**/
     public Iterable<PatientModel> getPatients(){
         return patientRepository.findAll();
@@ -26,6 +40,7 @@ public class PatientService {
 
     /**Endpoint to get one patient**/
     public Optional<PatientModel> getPatient(final Long id){
-        return patientRepository.findById(id);
+        Optional<PatientModel> patient = patientRepository.findById(id) ;
+        return Optional.ofNullable(patient.orElse(null));
     }
 }
